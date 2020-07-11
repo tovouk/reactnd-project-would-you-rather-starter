@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
+import Nav from './Nav/Nav'
 import Login from './Login/Login'
 import QuestionList from './QuestionList/QuestionList'
 
@@ -20,7 +21,7 @@ class App extends Component {
           <LoadingBar />
           <div>
             {
-              this.props.loading === true ? <div>Loading</div> : this.props.authedUser === "guest" ? <Login /> : <QuestionList/>  
+              this.props.loading === true ? <div>Loading</div> : this.props.authedUser === "guest" ? <Login /> : <div><Nav /><QuestionList/></div> 
             }
           </div>
         </Fragment>

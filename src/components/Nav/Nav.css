@@ -1,0 +1,28 @@
+.left{
+    display:flex;
+    padding:0;
+}
+nav{
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+}
+ul{
+    margin:0;
+}
+nav ul li {
+    padding:16px;
+    list-style-type: none;
+}
+.logout{
+    background-color: red;
+    color:white;
+}
+.logout:hover{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}

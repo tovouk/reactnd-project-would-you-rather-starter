@@ -1,16 +1,25 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import UserSelect from '../UserSelect/UserSelect'
+import './Login.css'
 
 class Login extends Component {
 
-
     render(){
         return (
-            <div>
-                Login
+            <div className="center">
+                {this.props.users.map (user => (
+                    <UserSelect id={user} />
+                ))}
             </div>
         )
     }
 }
 
-export default connect()(Login)
+function mapStateToProps ({users}) {
+    return {
+      users : Object.keys(users)
+    }
+  }
+
+export default connect(mapStateToProps)(Login)
