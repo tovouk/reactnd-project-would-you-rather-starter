@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading'
 import Nav from './Nav/Nav'
 import Login from './Login/Login'
 import QuestionList from './QuestionList/QuestionList'
+import NewQuestion from './NewQuestion/NewQuestion'
 
 class App extends Component {
   
@@ -21,7 +22,14 @@ class App extends Component {
           <LoadingBar />
           <div>
             {
-              this.props.loading === true ? <div>Loading</div> : this.props.authedUser === "guest" ? <Login /> : <div><Nav /><QuestionList/></div> 
+              this.props.loading === true ? <div>Loading</div> 
+              : this.props.authedUser === "guest" 
+              ? <Login /> 
+              : <div>
+                <Nav />
+                <Route exact path="/" component={QuestionList} />
+                <Route path="/new" component={NewQuestion} />
+                </div> 
             }
           </div>
         </Fragment>

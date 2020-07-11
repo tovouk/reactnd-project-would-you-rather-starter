@@ -10,12 +10,13 @@ export class Nav extends Component {
     logout = ()=> {
         const {dispatch} = this.props
         dispatch(setAuthedUser("guest"))
+        
     }
 
     render() {
         return (
             <nav className='nav'>
-                <ul class="left">
+                <ul className="left">
                     <li>
                         <NavLink to='/' exact activeClassName='active'>Home</NavLink>
                     </li>

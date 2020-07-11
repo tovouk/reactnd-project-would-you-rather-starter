@@ -9,7 +9,7 @@ class Login extends Component {
         return (
             <div className="center">
                 {this.props.users.map (user => (
-                    <UserSelect id={user} />
+                    <UserSelect key={user} id={user} />
                 ))}
             </div>
         )

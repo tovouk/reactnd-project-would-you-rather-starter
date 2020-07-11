@@ -13,7 +13,7 @@ export class UserSelect extends Component {
     render() {
         return (
             <div className="usercard" onClick={this.selectUser}>
-                <img src={this.props.user.avatarURL} />
+                <img alt={this.props.user.id} src={this.props.user.avatarURL} />
                 <div className="user-info">
                     <span className='title'>{this.props.user.name}</span>
                     <p>Number of Questions: {this.props.user.questions.length}</p>

@@ -7,11 +7,20 @@ class QuestionList extends Component {
     render(){
         return (
             <div>
-                Question List
+                <h1>Questions List</h1>
+                {this.props.questions.map(question=>(
+                    <Question key={question} id={question} />
+                ))}
             </div>
         )
     }
 
 }
 
-export default connect()(QuestionList)
+function mapStateToProps ({questions}) {
+    return {
+        questions: Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(QuestionList)
