@@ -19,11 +19,13 @@ export class Question extends Component {
                 <div className='flex'>
                 <p className="optionanswered">
                 {this.props.question.optionOne.text}<br/><br/>
-                <span>Votes: {this.props.question.optionOne.votes.length}</span>
+                <span>Votes: {this.props.question.optionOne.votes.length}</span><br/>
+                <span>{Math.round(this.props.question.optionOne.votes.length/ (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length) * 100)} %</span>
                 </p>
                 <p className="optionanswered">
                     {this.props.question.optionTwo.text}<br/><br/>
-                    <span>Votes: {this.props.question.optionTwo.votes.length}</span>
+                    <span>Votes: {this.props.question.optionTwo.votes.length}</span><br/>
+                    <span>{Math.round(this.props.question.optionTwo.votes.length/ (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length) * 100)} %</span>
                 </p>
                 </div>
                 : 
