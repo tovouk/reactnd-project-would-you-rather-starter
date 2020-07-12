@@ -1,5 +1,4 @@
-import {saveQuestion,saveQuestionAnswer} from '../utils/api'
-import {userAnswerQuestion} from './users'
+import {saveQuestion} from '../utils/api'
 import {showLoading, hideLoading} from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
@@ -34,25 +33,11 @@ export function receiveQuestions (questions) {
     }
 }
 
-function answerQuestion ({authedUser,qid,answer}) {
+export function answerQuestion ({authedUser,qid,answer}) {
     return {
         type: ANSWER_QUESTION,
         authedUser,
         qid,
         answer
-    }
-}
-
-export function handleAnswerQuestion(info) {
-    return (dispatch) => {
-        dispatch(answerQuestion(info))
-        dispatch(userAnswerQuestion(info))
-        return saveQuestionAnswer(info)
-        .catch((e) => {
-            console.warn('Error in handleAnswerQuestion: ', e)
-            dispatch(answerQuestion(info))
-            dispatch(userAnswerQuestion(info))
-            alert('There was an error answering a question. Try again.')
-        })
     }
 }

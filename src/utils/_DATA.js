@@ -182,7 +182,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            qid: answer
+            [qid]: answer
           }
         }
       }
@@ -197,6 +197,9 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
+
+      console.log("Questions: ", questions)
+      console.log("Users: ", users)
 
       res()
     }, 500)

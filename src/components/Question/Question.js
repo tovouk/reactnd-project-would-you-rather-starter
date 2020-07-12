@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {handleAnswerQuestion} from '../../actions/questions'
+import {handleAnswerQuestion} from '../../actions/shared'
 import './Question.css'
 
 export class Question extends Component {
-    //TODO fix adding answer to user answers
 
     answerQuestion(option) {
         const {authedUser,dispatch,question} = this.props

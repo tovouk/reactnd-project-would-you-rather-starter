@@ -1,6 +1,6 @@
-import {getInitialData} from '../utils/api'
-import {receiveUsers} from './users'
-import {receiveQuestions} from './questions'
+import {getInitialData,saveQuestionAnswer} from '../utils/api'
+import {receiveUsers,userAnswerQuestion} from './users'
+import {receiveQuestions,answerQuestion} from './questions'
 import {setAuthedUser} from './authedUser'
 import {showLoading, hideLoading} from 'react-redux-loading'
 
@@ -15,6 +15,20 @@ export function handleInitialData () {
             dispatch(receiveQuestions(questions))
             dispatch(setAuthedUser(AUTHED_ID))
             dispatch(hideLoading())
+        })
+    }
+}
+
+export function handleAnswerQuestion(info) {
+    return (dispatch) => {
+        dispatch(answerQuestion(info))
+        dispatch(userAnswerQuestion(info))
+        return saveQuestionAnswer(info)
+        .catch((e) => {
+            console.warn('Error in handleAnswerQuestion: ', e)
+            dispatch(answerQuestion(info))
+            dispatch(userAnswerQuestion(info))
+            alert('There was an error answering a question. Try again.')
         })
     }
 }
