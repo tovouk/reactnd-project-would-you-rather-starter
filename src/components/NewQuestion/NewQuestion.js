@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {handleAddQuestion} from '../../actions/shared'
+import {Redirect} from 'react-router-dom'
 import './NewQuestion.css'
 
 export class NewQuestion extends Component {
 
     state = {
-        question: '',
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        toHome: false
     }
 
     handleChange = (e) =>{
@@ -18,27 +20,36 @@ export class NewQuestion extends Component {
     }
 
     checkDisabled(){
-        const {question,optionOne,optionTwo} = this.state
+        const {optionOne,optionTwo} = this.state
 
-        return question === '' || optionOne === '' || optionTwo === ''
+        return optionOne === '' || optionTwo === ''
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        
+        e.preventDefault()
+        const {dispatch} = this.props
+
+        dispatch(handleAddQuestion(this.props.authedUser,this.state.optionOne,this.state.optionTwo))
+
+        this.setState(()=> ({
+            optionOne: '',
+            optionTwo: ''
+        }))
+
+        this.setState({toHome:true})
+
     }
 
     render() {
-        const {question,optionOne,optionTwo} = this.state
+        const {optionOne,optionTwo} = this.state
+        
+        if(this.state.toHome)
+            return <Redirect to='/' />
 
         return (
             <div className="constrain">
-                <form className="addForm">
-                    <div>
-                    <label>Would you rather</label>
-                    <input placeholder="Enter a question" className="w480" onChange={this.handleChange}
-                        value={question} type="text" name="question" id="question"/>
-                    </div>
+                <form className="addForm" onSubmit={this.onSubmit} >
+                    <h1>Would you rather?</h1>
                     <div>
                     <label>Option One</label>
                     <input placeholder="Enter an option" className="w480" onChange={this.handleChange}
@@ -49,15 +60,15 @@ export class NewQuestion extends Component {
                     <input placeholder="Enter a second option" className="w480" onChange={this.handleChange}
                         value={optionTwo} type="text" name="optionTwo" id="optionTwo"/>
                     </div>
-                    <button disabled={question === '' || optionOne === '' || optionTwo === ''}>Submit</button>
+                    <button disabled={optionOne === '' || optionTwo === ''}>Submit</button>
                 </form>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    
+const mapStateToProps = ({questions,authedUser}) => ({
+    authedUser
 })
 
 export default connect(mapStateToProps)(NewQuestion)

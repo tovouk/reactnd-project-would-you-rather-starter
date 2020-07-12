@@ -198,9 +198,6 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
-      console.log("Questions: ", questions)
-      console.log("Users: ", users)
-
       res()
     }, 500)
   })
