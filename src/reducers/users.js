@@ -9,7 +9,7 @@ export default function users (state = {},action) {
         case USER_ANSWER_QUESTION:
             return {
                 ...state,
-                state[action.authedUser]:{
+                [action.authedUser]:{
                     ...state[action.authedUser],
                     answers: {
                         ...state[action.authedUser].answers,
