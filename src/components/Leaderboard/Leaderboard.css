@@ -1,0 +1,16 @@
+.leaderboard{
+    width:90%;
+    max-width:480px;
+    margin:auto;
+}
+.userCard img{
+    margin-top: 16px;;
+    margin-left: 16px;;
+}
+.userdetails{
+    margin-left:16px;
+}
+.m-auto{
+    margin:auto;
+    text-align: center;
+}

@@ -26,3 +26,15 @@ a{
     text-decoration: none;
     color:black;
 }
+@media only screen and (max-width:480px){
+    nav{
+        max-width:480px;
+    }
+    .left,.right{
+        width:50%;
+        display:unset;
+    }
+    nav ul li {
+        padding-right:0;
+    }
+}

@@ -1,0 +1,26 @@
+.question-page,.answered-question-page{
+    max-width:480px;
+    margin:16px auto;
+    border:2px solid gray;
+}
+.question-page{
+    background-color: lightgray;
+}
+.flex{
+    display:flex;
+    justify-content: space-around;
+    padding-bottom:16px;
+}
+
+.option,.optionanswered{
+    padding:8px;
+    width:40%;
+    text-align:center;
+}
+.optionunanswered:hover{
+    cursor: pointer;
+    background-color: white;
+}
+.choice{
+    border: 1px solid black;
+}

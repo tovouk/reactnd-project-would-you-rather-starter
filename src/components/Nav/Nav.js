@@ -13,6 +13,10 @@ export class Nav extends Component {
         
     }
 
+    openMobileMenu = () => {
+
+    }
+
     render() {
         return (
             <nav className='nav'>

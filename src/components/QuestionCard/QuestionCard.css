@@ -2,6 +2,7 @@
     max-width:480px;
     margin:16px auto;
     border:2px solid gray;
+    cursor: pointer;
 }
 .question{
     background-color: lightgray;
@@ -16,7 +17,15 @@
     padding:8px;
     width:40%;
 }
-.option:hover{
-    cursor: pointer;
-    background-color: white;
+
+.mini-img{
+    height:50px;
+    width:50px;
+    margin-top:8px;
+}
+.wyr-title{
+    text-align:center;
+}
+.wyr-title h1{
+    margin-top:0;
 }

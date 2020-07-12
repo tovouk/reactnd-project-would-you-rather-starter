@@ -1,47 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {handleAnswerQuestion} from '../../actions/shared'
-import QuestionDetails from '../QuestionDetails/QuestionDetails'
+import {Link} from 'react-router-dom'
 import './QuestionCard.css'
 
 export class Question extends Component {
 
-    answerQuestion(option) {
-        const {authedUser,dispatch,question} = this.props
-        dispatch(handleAnswerQuestion({authedUser,qid:question.id,answer:option}))
-    }
-    //TODO restructure this to link to QuestionDetails (move details there)
+
     render() {
+
+        const {authedUser,question,user} = this.props
+
+        const optionOne = question.optionOne.votes.includes(authedUser)
+        const optionTwo = question.optionTwo.votes.includes(authedUser)
+
         return (
+            <Link to={`/questions/${question.id}`}>
             <div className={`${this.props.answered ? "answered-question" : "question" }`}>
+                <div className="wyr-title">
+                <img className="mini-img" src={user.avatarURL} />
                 <h1>Would you rather:</h1>
+                </div>
                 {this.props.answered
                 ?
                 <div className='flex'>
-                <p className="optionanswered">
-                {this.props.question.optionOne.text}<br/><br/>
-                <span>Votes: {this.props.question.optionOne.votes.length}</span><br/>
-                <span>{Math.round(this.props.question.optionOne.votes.length/ (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length) * 100)} %</span>
+                <p className={ optionOne ? 'choice optionanswered' : 'optionanswered'}>
+                    {question.optionOne.text}<br/><br/>
+                    <span>Votes: {question.optionOne.votes.length}</span><br/>
+                    <span>{Math.round(question.optionOne.votes.length/ (question.optionOne.votes.length + question.optionTwo.votes.length) * 100)} %</span>        
                 </p>
-                <p className="optionanswered">
-                    {this.props.question.optionTwo.text}<br/><br/>
-                    <span>Votes: {this.props.question.optionTwo.votes.length}</span><br/>
-                    <span>{Math.round(this.props.question.optionTwo.votes.length/ (this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length) * 100)} %</span>
+                <p className={ optionTwo ? 'choice optionanswered' : 'optionanswered'}>
+                    {question.optionTwo.text}<br/><br/>
+                    <span>Votes: {question.optionTwo.votes.length}</span><br/>
+                    <span>{Math.round(question.optionTwo.votes.length/ (question.optionOne.votes.length + question.optionTwo.votes.length) * 100)} %</span>
                 </p>
                 </div>
                 : 
                 <div className='flex'>
-                <p onClick={() => this.answerQuestion("optionOne")} className="option">
-                {this.props.question.optionOne.text}<br/><br/>
-                <span>Votes: {this.props.question.optionOne.votes.length}</span>
+                <p className="option">
+                {question.optionOne.text}<br/><br/>
                 </p>
-                <p onClick={() => this.answerQuestion("optionTwo")} className="option">
-                    {this.props.question.optionTwo.text}<br/><br/>
-                    <span>Votes: {this.props.question.optionTwo.votes.length}</span>
+                <p className="option">
+                    {question.optionTwo.text}<br/><br/>
                 </p>
                 </div>
                 }
-            </div>
+                </div>
+            </Link>
         )
     }
 }
@@ -52,7 +56,8 @@ function mapStateToProps ({authedUser,questions,users},{id}) {
     return {
         authedUser,
         question,
-        users
+        users,
+        user: users[authedUser]
     }
 }
 

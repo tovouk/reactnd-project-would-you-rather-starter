@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaderboardCard from '../LeaderboardCard/LeaderboardCard'
+import './Leaderboard.css'
 
 export class Leaderboard extends Component {
     render() {
-        
+        //TODO make UserSelect/LeaderboardCard into one component and handle login if not loggedin
         return (
-            <div>
-                Leaderboard
+            <div className="leaderboard center">
+                <h1 className="m-auto">Leaderboard</h1>
+                {this.props.users.map((user,index)=>(
+                    <LeaderboardCard id={user} key={index} />
+                ))}
             </div>
         )
     }
 }
-//TODO Sort users by sum of asked & answered questions
+
 const mapStateToProps = ({users}) => ({
-    users
+    users: Object.keys(users)
+    .sort((a,b)=> (users[b].questions.length + Object.keys(users[b].answers).length) - (users[a].questions.length + Object.keys(users[a].answers).length))
 })
 
 
