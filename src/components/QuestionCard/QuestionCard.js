@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {handleAnswerQuestion} from '../../actions/shared'
-import './Question.css'
+import QuestionDetails from '../QuestionDetails/QuestionDetails'
+import './QuestionCard.css'
 
 export class Question extends Component {
 
@@ -9,7 +10,7 @@ export class Question extends Component {
         const {authedUser,dispatch,question} = this.props
         dispatch(handleAnswerQuestion({authedUser,qid:question.id,answer:option}))
     }
-
+    //TODO restructure this to link to QuestionDetails (move details there)
     render() {
         return (
             <div className={`${this.props.answered ? "answered-question" : "question" }`}>

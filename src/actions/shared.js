@@ -19,6 +19,8 @@ export function handleInitialData () {
     }
 }
 
+//TODO create addQuestion (dispatch to users and questions)
+
 export function handleAnswerQuestion(info) {
     return (dispatch) => {
         dispatch(answerQuestion(info))

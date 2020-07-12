@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Question from '../Question/Question'
+import Question from '../QuestionCard/QuestionCard'
 import './QuestionList.css'
 
 class QuestionList extends Component {
@@ -12,7 +12,7 @@ class QuestionList extends Component {
     changeQuestions = (text) => {
         this.setState({filter:text})
     }
-
+    
     render(){
         let unansweredQuestions = this.props.questionIDs.filter(question => (
             !this.props.questions[question].optionOne.votes.includes(this.props.authedUser)

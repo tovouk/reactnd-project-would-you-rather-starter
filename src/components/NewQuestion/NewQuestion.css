@@ -1,0 +1,31 @@
+.constrain{
+    max-width:480px;
+    margin:auto;
+}
+.addForm{
+    display:flex;
+    flex-direction: column;
+}
+
+.addForm label{
+    font-size:1.2em;
+}
+
+.addForm button {
+    width: 200px;
+    margin:auto;
+    font-size:1.2em;
+    background-color: lightgray;
+}
+
+.w480{
+    width:100%;
+    max-width:480px;
+}
+
+input.w480{
+    padding:8px;
+    line-height:1.2;
+    font-size:1.2em;
+    margin-bottom:8px;
+}
