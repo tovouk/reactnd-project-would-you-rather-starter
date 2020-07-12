@@ -8,6 +8,7 @@ import Nav from './Nav/Nav'
 import Login from './Login/Login'
 import QuestionList from './QuestionList/QuestionList'
 import NewQuestion from './NewQuestion/NewQuestion'
+import QuestionPage from './QuestionPage/QuestionPage'
 
 class App extends Component {
   
@@ -29,6 +30,7 @@ class App extends Component {
                 <Nav />
                 <Route exact path="/" component={QuestionList} />
                 <Route path="/new" component={NewQuestion} />
+                <Route path="/questions/:question_id" component={QuestionPage} />
                 </div> 
             }
           </div>

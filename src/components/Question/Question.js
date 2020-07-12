@@ -1,17 +1,44 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {handleAnswerQuestion} from '../../actions/questions'
+import './Question.css'
 
 export class Question extends Component {
-    //TODO create handler for answering question and appending question id/answer to authedUser
+    //TODO fix adding answer to user answers
+
+    answerQuestion(option) {
+        const {authedUser,dispatch,question} = this.props
+        dispatch(handleAnswerQuestion({authedUser,qid:question.id,answer:option}))
+    }
 
     render() {
         return (
-            <div>
+            <div className={`${this.props.answered ? "answered-question" : "question" }`}>
                 <h1>Would you rather:</h1>
+                {this.props.answered
+                ?
                 <div className='flex'>
-                    <p>{this.props.question.optionOne.text}</p>
-                    <p>{this.props.question.optionTwo.text}</p>
+                <p className="optionanswered">
+                {this.props.question.optionOne.text}<br/><br/>
+                <span>Votes: {this.props.question.optionOne.votes.length}</span>
+                </p>
+                <p className="optionanswered">
+                    {this.props.question.optionTwo.text}<br/><br/>
+                    <span>Votes: {this.props.question.optionTwo.votes.length}</span>
+                </p>
                 </div>
+                : 
+                <div className='flex'>
+                <p onClick={() => this.answerQuestion("optionOne")} className="option">
+                {this.props.question.optionOne.text}<br/><br/>
+                <span>Votes: {this.props.question.optionOne.votes.length}</span>
+                </p>
+                <p onClick={() => this.answerQuestion("optionTwo")} className="option">
+                    {this.props.question.optionTwo.text}<br/><br/>
+                    <span>Votes: {this.props.question.optionTwo.votes.length}</span>
+                </p>
+                </div>
+                }
             </div>
         )
     }

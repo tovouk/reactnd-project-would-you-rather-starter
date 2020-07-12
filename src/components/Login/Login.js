@@ -8,6 +8,7 @@ class Login extends Component {
     render(){
         return (
             <div className="center">
+                <h1 className="text-center">Please Login</h1>
                 {this.props.users.map (user => (
                     <UserSelect key={user} id={user} />
                 ))}

@@ -1,4 +1,4 @@
-.left{
+.left,.right{
     display:flex;
     padding:0;
 }
