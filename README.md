@@ -3,3 +3,5 @@
 This project allows you to login or create a user and create or answer would you rather type questions.
 
 Use npm install and then npm start to run
+
+TODO: Clean up Components and Extra CSS (non-scoped)

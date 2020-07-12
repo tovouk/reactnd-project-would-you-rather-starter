@@ -17,7 +17,7 @@ export class Question extends Component {
             <Link to={`/questions/${question.id}`}>
             <div className={`${this.props.answered ? "answered-question" : "question" }`}>
                 <div className="wyr-title">
-                <img className="mini-img" src={user.avatarURL} />
+                <img alt={user.name} className="mini-img" src={user.avatarURL} />
                 <h1>Would you rather:</h1>
                 </div>
                 {this.props.answered
