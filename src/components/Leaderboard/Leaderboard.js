@@ -5,7 +5,6 @@ import './Leaderboard.css'
 
 export class Leaderboard extends Component {
     render() {
-        //TODO make UserSelect/LeaderboardCard into one component and handle login if not loggedin
         return (
             <div className="leaderboard center">
                 <h1 className="m-auto">Leaderboard</h1>

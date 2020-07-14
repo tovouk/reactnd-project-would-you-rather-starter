@@ -125,8 +125,6 @@ export function _getUsers () {
   })
 }
 
-//TODO create add user function
-
 export function _getQuestions () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...questions}), 1000)

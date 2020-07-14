@@ -1,7 +1,19 @@
 # Would You Rather Project
 
-This project allows you to login or create a user and create or answer would you rather type questions.
+This project is a web app that allows users to create polls, having two options to pick from, as well as vote on them. Upon voting, the poll will show its stats for each answer selected. There is also a leaderboard that shows how many answers and polls a user has.
 
-Use npm install and then npm start to run
+A user must be logged in to interact with this webapp effectively.
 
-TODO: Clean up Components and Extra CSS (non-scoped)
+## Installation and Running Instructions
+
+clone this repo by using:
+
+    git clone https://github.com/tovouk/reactnd-project-would-you-rather-starter.git
+
+In the project root use the following command to install the required packages:
+
+    npm install
+
+Followed by:
+
+    npm start
